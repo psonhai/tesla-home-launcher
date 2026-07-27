@@ -8,6 +8,7 @@
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
+	--white: #ddd;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
 	--gray-dark: 34, 41, 57;
@@ -30,12 +31,16 @@
 	font-style: normal;
 	font-display: swap;
 }
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 body {
 	font-family: "Atkinson", sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
+	background: rgb(var(--black));
 	background-size: 100% 600px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
