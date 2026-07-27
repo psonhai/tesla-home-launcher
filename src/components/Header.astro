@@ -52,10 +52,16 @@ header {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Full screen button */
-.top-left {
+.fullscreen-btn {
   position: fixed;
   top: 25px;
   left: 25px;
+}
+
+@media (min-width: 1920px) and (min-height: 1200px),
+       (max-width: 600px) {
+  .fullscreen-btn {
+    display: none;
+  }
 }
 </style>
