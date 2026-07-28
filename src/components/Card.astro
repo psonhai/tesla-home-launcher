@@ -3,20 +3,23 @@ interface Props {
   href?: string;
   title: string;
   color: string;
+  id?: string;
 }
 
 const {
   href,
   title,
   color,
+  id,
 } = Astro.props;
 ---
 
 {
   !href ? (
     <button 
+      id={id}
       class={`card ${color}`}
-      style={`--color: ${color}`}>
+    >
       {title}
     </button>
   ) : (

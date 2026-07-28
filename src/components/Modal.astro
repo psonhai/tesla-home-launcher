@@ -1,0 +1,199 @@
+<div class="modal-overlay" id="urlModal">
+  <div class="modal">
+    <h2 class="modal-title">Enter Web Address</h2>
+
+    <input
+      type="text"
+      id="urlInput"
+      autocomplete="off"
+    />
+
+    <div class="modal-buttons">
+      <button class="modal-btn btn-cancel" id="cancelBtn">
+        Cancel
+      </button>
+
+      <button class="modal-btn btn-go" id="goBtn">
+        Go
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("urlModal");
+  const closeBtn = document.getElementById("cancelBtn");
+  const goBtn = document.getElementById("goBtn");
+  const urlInput = document.getElementById("urlInput");
+
+  function openModal() {
+    modal?.classList.add("active");
+    if (urlInput instanceof HTMLInputElement) {
+      urlInput.value = "";
+      setTimeout(() => urlInput.focus(), 50);
+    }
+  }
+
+  function closeModal() {
+    modal?.classList.remove("active");
+  }
+
+  function navigateToUrl() {
+    if (!(urlInput instanceof HTMLInputElement)) return;
+
+    let url = urlInput.value.trim();
+
+    if (!url) return;
+
+    if (!/^https?:\/\//i.test(url)) {
+      url = "https://" + url;
+    }
+
+    window.location.href = url;
+  }
+
+  document
+    .getElementById("customUrlBtn")
+    ?.addEventListener("click", openModal);
+
+  closeBtn?.addEventListener("click", closeModal);
+
+  goBtn?.addEventListener("click", navigateToUrl);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  urlInput?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      navigateToUrl();
+    }
+
+    if (e.key === "Escape") {
+      closeModal();
+    }
+  });
+</script>
+
+<style>
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+
+    z-index: 1000;
+  }
+
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal {
+    width: 90%;
+    max-width: 450px;
+
+    padding: 30px;
+
+    background: #111118;
+
+    border-radius: 16px;
+    border: 1px solid #aaa;
+
+    text-align: center;
+
+    box-shadow:
+      0 0 20px rgba(255,255,255,0.3),
+      0 10px 30px rgba(0,0,0,0.8);
+
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+  }
+
+  .modal-overlay.active .modal {
+    transform: scale(1);
+  }
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    font-size: 24px;
+  }
+
+  h2.modal-title {
+    color: #ccc;
+  }
+
+  input {
+    width: 100%;
+
+    padding: 14px;
+
+    font-size: 16px;
+
+    border-radius: 8px;
+    border: 1px solid #444;
+
+    background: #1b1b26;
+    color: white;
+
+    outline: none;
+
+    margin-bottom: 20px;
+  }
+
+  input:focus {
+    border-color: white;
+
+    box-shadow:
+      0 0 10px rgba(255,255,255,0.4);
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .modal-btn {
+    padding: 12px 24px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    border-radius: 8px;
+    border: none;
+
+    cursor: pointer;
+  }
+
+  .btn-cancel {
+    background: #333;
+    color: #ccc;
+  }
+
+  .btn-go {
+    background: linear-gradient(135deg, #555, #222);
+
+    color: white;
+
+    border: 1px solid #aaa;
+
+    box-shadow:
+      0 0 10px rgba(255,255,255,0.2);
+  }
+</style>

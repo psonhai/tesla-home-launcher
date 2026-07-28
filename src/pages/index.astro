@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Card from '../components/Card.astro';
 import CardGrid from "../components/CardGrid.astro";
+import Modal from "../components/Modal.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -22,6 +23,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			<Card 
 				title="Custom URL"
 				color="customurl"
+				id="customUrlBtn"
 			/>
 			<Card 
 				title="Karaoq.live"
@@ -38,5 +40,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				color="jellyfin"
 			/> -->
 		</CardGrid>
+
+		<Modal />
 	</body>
 </html>
