@@ -1,0 +1,134 @@
+---
+interface Props {
+  href?: string;
+  title: string;
+  color: string;
+}
+
+const {
+  href,
+  title,
+  color,
+} = Astro.props;
+---
+
+{
+  !href ? (
+    <button 
+      class={`card ${color}`}
+      style={`--color: ${color}`}>
+      {title}
+    </button>
+  ) : (
+    <a class={`card ${color}`} href={href}>
+      {title}
+    </a>
+  )
+}
+
+<style>
+  .card {
+    height: 160px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 28px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card:active {
+    transform: scale(0.96);
+  }
+
+  .google {
+    background: linear-gradient(135deg, #4285f4, #12345b);
+    border: 1px solid #4285f4;
+    box-shadow: 0 0 10px rgba(66, 133, 244, 0.4);
+  }
+
+  .google:hover {
+    border-color: #64a0ff;
+    box-shadow:
+      0 0 20px rgba(66, 133, 244, 0.8),
+      0 0 35px rgba(66, 133, 244, 0.4);
+  }
+
+  .customurl {
+    background: linear-gradient(135deg, #555, #111);
+    border: 1px solid #aaa;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+
+  .customurl:hover {
+    border-color: #fff;
+    box-shadow:
+      0 0 20px rgba(255,255,255,0.7),
+      0 0 35px rgba(255,255,255,0.3);
+  }
+
+  .karaoq {
+    background: linear-gradient(135deg, #ff00cc, #3333ff);
+    border: 1px solid #ff00cc;
+    box-shadow: 0 0 10px rgba(255,0,204,0.4);
+  }
+
+  .karaoq:hover {
+    border-color: #ff66e5;
+    box-shadow:
+      0 0 20px rgba(255,0,204,0.8),
+      0 0 35px rgba(255,0,204,0.4);
+  }
+
+  .afterplay {
+    background: linear-gradient(135deg, #ff5100, #801800);
+    border: 1px solid #ff5100;
+    box-shadow: 0 0 10px rgba(255,81,0,0.4);
+  }
+
+  .afterplay:hover {
+    border-color: #ff884d;
+    box-shadow:
+      0 0 20px rgba(255,81,0,0.8),
+      0 0 35px rgba(255,81,0,0.4);
+  }
+
+  .jellyfin {
+    background: linear-gradient(135deg, #00a4dc, #aa5cc3);
+    border: 1px solid #aa5cc3;
+    box-shadow: 0 0 10px rgba(170,92,195,0.4);
+  }
+
+  .jellyfin:hover {
+    border-color: #d896ff;
+    box-shadow:
+      0 0 20px rgba(170,92,195,0.8),
+      0 0 35px rgba(170,92,195,0.4);
+  }
+
+  .retroassembly {
+    background: linear-gradient(135deg, #ff1100, #7a0000);
+    border: 1px solid #ff2200;
+    box-shadow: 0 0 10px rgba(255,34,0,0.4);
+  }
+
+  .retroassembly:hover {
+    border-color: #ff6655;
+    box-shadow:
+      0 0 20px rgba(255,34,0,0.8),
+      0 0 35px rgba(255,34,0,0.4);
+  }
+</style>

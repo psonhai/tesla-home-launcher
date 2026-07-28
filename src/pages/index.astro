@@ -1,6 +1,8 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
+import Card from '../components/Card.astro';
+import CardGrid from "../components/CardGrid.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -11,5 +13,30 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header />
+		<CardGrid>
+			<Card 
+				title="Google Search"
+				color="google"
+				href="https://www.google.com"
+			/>
+			<Card 
+				title="Custom URL"
+				color="customurl"
+			/>
+			<Card 
+				title="Karaoq.live"
+				color="karaoq"
+				href="https://www.karaoq.live/"
+			/>
+			<Card 
+				title="Afterplay.io"
+				color="afterplay"
+				href="https://afterplay.io/"
+			/>
+			<!-- <Card 
+				title="Jellyfin"
+				color="jellyfin"
+			/> -->
+		</CardGrid>
 	</body>
 </html>
